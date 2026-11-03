@@ -335,6 +335,14 @@ export const es: Dictionary = {
       { label: "GitHub", href: "https://github.com/vanerezk" },
     ],
   },
+  cv: {
+    download: "Descargar CV (PDF)",
+    command: "Descargar CV en PDF",
+    title: "Desarrolladora web fullstack",
+    profile:
+      "Ingeniera de software fullstack con formación en arquitectura. Diseño y desarrollo webs a medida, sistemas internos e integraciones de API con Next.js, React, TypeScript y Node. Experiencia en plataformas de mucho tráfico y en llevar un producto del modelo de datos al despliegue.",
+    headings: { profile: "Perfil", experience: "Experiencia", projects: "Proyectos destacados", stack: "Stack" },
+  },
   palette: {
     placeholder: "Escribe un comando o una sección…",
     empty: "Sin resultados",

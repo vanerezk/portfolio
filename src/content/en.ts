@@ -334,6 +334,14 @@ export const en: Dictionary = {
       { label: "GitHub", href: "https://github.com/vanerezk" },
     ],
   },
+  cv: {
+    download: "Download CV (PDF)",
+    command: "Download CV as PDF",
+    title: "Fullstack web developer",
+    profile:
+      "Full-stack software engineer with a background in architecture. I design and build custom websites, internal systems and API integrations with Next.js, React, TypeScript and Node. Experience on high-traffic platforms and taking a product from data model to deployment.",
+    headings: { profile: "Profile", experience: "Experience", projects: "Selected projects", stack: "Stack" },
+  },
   palette: {
     placeholder: "Type a command or a section…",
     empty: "No results",

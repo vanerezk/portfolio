@@ -37,6 +37,7 @@ export function CommandPalette({ t, lang }: { t: Dictionary; lang: Locale }) {
         hint: "@",
         run: () => void navigator.clipboard?.writeText(site.email),
       },
+      { id: "cv", label: t.cv.command, hint: "PDF", run: () => window.open(`/${lang}/cv.pdf`, "_blank") },
       { id: "grid", label: t.palette.toggleGrid, hint: "G", run: toggleGrid },
       {
         id: "lang",

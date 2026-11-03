@@ -35,7 +35,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           <ProjectIndex t={t} />
         </Sheet>
 
-        <Experience t={t} />
+        <Experience t={t} lang={lang} />
         <Services t={t} />
         <Stack t={t} />
 

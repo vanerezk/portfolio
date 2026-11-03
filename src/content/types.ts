@@ -119,6 +119,13 @@ export type Dictionary = {
       errors: { name: string; email: string; message: string; send: string };
     };
   };
+  cv: {
+    download: string;
+    command: string;
+    title: string;
+    profile: string;
+    headings: { profile: string; experience: string; projects: string; stack: string };
+  };
   palette: {
     placeholder: string;
     empty: string;

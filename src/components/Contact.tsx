@@ -61,6 +61,9 @@ export function ContactBlock({ t, lang }: { t: Dictionary; lang: Locale }) {
             {l.label} ↗
           </a>
         ))}
+        <a href={`/${lang}/cv.pdf`} download className="link-draw">
+          {t.cv.download} ↓
+        </a>
         <span role="status" className="sr-only">
           {copied ? c.copied : ""}
         </span>

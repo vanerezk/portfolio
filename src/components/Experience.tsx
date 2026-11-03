@@ -1,8 +1,8 @@
-import type { Dictionary } from "@/content";
+import type { Dictionary, Locale } from "@/content";
 import { Sheet } from "./Sheet";
 
 /** Trayectoria: cada puesto como una fila del cuadro de superficies de un plano. */
-export function Experience({ t }: { t: Dictionary }) {
+export function Experience({ t, lang }: { t: Dictionary; lang: Locale }) {
   const e = t.experience;
   return (
     <Sheet id="experience" {...t.sheets.experience} className="pb-24 md:pb-40">
@@ -38,6 +38,11 @@ export function Experience({ t }: { t: Dictionary }) {
           ))}
         </dd>
       </dl>
+      <div className="sheet-grid pt-10">
+        <a href={`/${lang}/cv.pdf`} download className="link-draw col-span-4 md:col-span-9 md:col-start-4">
+          {t.cv.download} ↓
+        </a>
+      </div>
     </Sheet>
   );
 }
