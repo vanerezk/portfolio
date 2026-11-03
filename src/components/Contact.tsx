@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import type { Dictionary } from "@/content";
+import type { Dictionary, Locale } from "@/content";
 import { site } from "@/content";
+import { ContactForm } from "./ContactForm";
 
-/** Hoja de "Aprobación": email gigante que se copia y estampa un sello. */
-export function ContactBlock({ t }: { t: Dictionary }) {
+/** Hoja de "Aprobación": formulario, y el email gigante que se copia y estampa un sello. */
+export function ContactBlock({ t, lang }: { t: Dictionary; lang: Locale }) {
   const c = t.contact;
   const [copied, setCopied] = useState(false);
 
@@ -24,7 +25,13 @@ export function ContactBlock({ t }: { t: Dictionary }) {
       <h3 className="col-span-4 text-h2 font-medium md:col-span-8">{c.title}</h3>
       <p className="col-span-4 max-w-[44ch] text-lead text-ink-soft md:col-span-6">{c.lead}</p>
 
-      <div className="relative col-span-4 md:col-span-12">
+      <div className="col-span-4 md:col-span-8 md:col-start-1">
+        <ContactForm t={t} lang={lang} />
+      </div>
+
+      <p className="annot col-span-4 border-t border-line pt-6 text-ink-soft md:col-span-12">{c.direct}</p>
+
+      <div className="relative col-span-4 -mt-4 md:col-span-12">
         <a
           href={`mailto:${site.email}`}
           className="block break-all font-serif text-[clamp(2rem,9vw,9rem)] leading-none italic transition-colors hover:text-accent"

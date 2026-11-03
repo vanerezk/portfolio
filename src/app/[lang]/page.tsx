@@ -40,7 +40,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         <Stack t={t} />
 
         <Sheet id="contact" {...t.sheets.contact}>
-          <ContactBlock t={t} />
+          <ContactBlock t={t} lang={lang} />
         </Sheet>
       </main>
 

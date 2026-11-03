@@ -104,7 +104,20 @@ export type Dictionary = {
     copy: string;
     copied: string;
     stamp: string;
+    direct: string;
     links: { label: string; href: string }[];
+    form: {
+      name: string;
+      email: string;
+      message: string;
+      messagePlaceholder: string;
+      send: string;
+      sending: string;
+      stamp: string;
+      sentTitle: string;
+      sentBody: string;
+      errors: { name: string; email: string; message: string; send: string };
+    };
   };
   palette: {
     placeholder: string;
