@@ -21,12 +21,13 @@ export const es: Dictionary = {
     hero: { code: "A-01", title: "Portada" },
     manifesto: { code: "A-02", title: "Memoria" },
     projects: { code: "A-03", title: "Proyectos" },
-    services: { code: "A-04", title: "Servicios" },
-    stack: { code: "A-05", title: "Materiales" },
-    contact: { code: "A-06", title: "Contacto" },
+    experience: { code: "A-04", title: "Trayectoria" },
+    services: { code: "A-05", title: "Servicios" },
+    stack: { code: "A-06", title: "Materiales" },
+    contact: { code: "A-07", title: "Contacto" },
   },
   hero: {
-    eyebrow: "Fullstack freelance · España",
+    eyebrow: "Fullstack freelance · Málaga",
     titleA: "Desarrollo web",
     titleAccent: "construido",
     titleB: "a escala 1:1.",
@@ -50,67 +51,127 @@ export const es: Dictionary = {
   },
   projects: {
     intro:
-      "Fichas técnicas. Los proyectos marcados como «Estudio» son ejercicios propios: como en arquitectura, un proyecto no construido también explica cómo piensas.",
+      "Fichas técnicas. Los marcados como «Encargo» son trabajo para clientes; los marcados como «Estudio», maquetas propias: como en arquitectura, un proyecto no construido también explica cómo piensas.",
     labels: {
+      client: "Encargo",
       built: "Construido",
       study: "Estudio",
       problem: "Problema",
       solution: "Solución",
+      parts: "Piezas del sistema",
       stack: "Stack",
       open: "Abrir ficha",
       close: "Cerrar ficha",
     },
     items: [
       {
-        id: "catalogo",
-        title: "Catálogo B2B conectado por API",
+        id: "vera",
+        title: "VERA · sistema digital de un bar",
         year: "2026",
-        kind: "study",
-        summary: "Catálogo de producto alimentado por una API REST externa.",
+        kind: "client",
+        featured: true,
+        summary:
+          "Web, reservas, panel de gestión, tablet de barra e inventario para un bar de Málaga que está a punto de abrir. Lo diseñé y construí de principio a fin.",
         problem:
-          "Un distribuidor mantiene su catálogo a mano en una web y en un Excel. Precios y stock nunca coinciden.",
+          "Un bar nuevo necesitaba mucho más que una web: reservas sin llamadas ni mensajes directos, un panel para gestionarlas, una pantalla en la barra para el servicio de la noche y saber cuánto deja cada consumición. Todo sin depender de cinco herramientas distintas.",
         solution:
-          "Capa intermedia en Node/Express que normaliza la API del proveedor, caché con revalidación y frontend en Next.js con filtros indexables.",
-        stack: ["Next.js", "TypeScript", "Node.js", "Express", "REST"],
-        metrics: [
-          { label: "Sincronía", value: "< 5 min" },
-          { label: "Fichas", value: "1.200" },
+          "Un único backend en Supabase (Postgres, Auth, Storage y Realtime) protegido con seguridad por filas, y varias aplicaciones encima que comparten los mismos datos en tiempo real.",
+        parts: [
+          {
+            name: "Web pública",
+            body: "Bilingüe y prerenderizada. Reserva de mesa con confirmación y anulación por email, eventos que se añaden al calendario y una CSP estricta.",
+          },
+          {
+            name: "Panel /admin",
+            body: "Reservas en directo, eventos con subida de cartel, carta con agotados y ajustes de horario, cierres y avisos.",
+          },
+          {
+            name: "Tablet de barra",
+            body: "PWA en modo quiosco: reservas de la noche, llegadas y no-shows, lo agotado, el tiempo para la terraza y la música del bar.",
+          },
+          {
+            name: "Inventario y costes",
+            body: "COGS, escandallos, mermas y precio medio ponderado, con alertas de stock y consejos en euros. En desarrollo.",
+          },
         ],
-        links: [{ label: "Repositorio", href: "#" }],
+        stack: ["React", "Next.js", "TypeScript", "Supabase", "PostgreSQL", "Vercel"],
+        metrics: [
+          { label: "Aplicaciones", value: "3" },
+          { label: "Migraciones SQL", value: "22" },
+          { label: "Idiomas", value: "ES · EN" },
+        ],
+        links: [{ label: "Ver la web", href: "https://veravercel.vercel.app" }],
       },
       {
-        id: "landing",
-        title: "Landing de alto rendimiento",
+        id: "az-listing-media",
+        title: "AZ Listing Media",
         year: "2026",
-        kind: "study",
-        summary: "Landing para un estudio local, optimizada al milímetro.",
+        kind: "client",
+        summary:
+          "Web de un estudio de fotografía y vídeo inmobiliario de Phoenix (Arizona), rehecha desde cero.",
         problem:
-          "Las landings hechas con constructores visuales pesan varios megas y pierden visitas antes de cargar.",
+          "Las fotos salían directas de la cámara, a unos 20 MB cada una: la portada descargaba alrededor de 190 MB antes de enseñar nada.",
         solution:
-          "HTML semántico, CSS sin dependencias, imágenes responsive y cero JavaScript bloqueante. Formulario con Server Action.",
-        stack: ["Next.js", "CSS", "Vercel"],
+          "React 19 y Vite, fotos en AVIF a varios tamaños con carga diferida, código dividido por página, cabeceras de seguridad y precios a la vista para que nadie tenga que preguntar.",
+        stack: ["React", "Vite", "CSS", "Node.js", "sharp", "Netlify"],
         metrics: [
-          { label: "Lighthouse", value: "100" },
-          { label: "Peso", value: "< 90 KB" },
+          { label: "Portada antes", value: "190 MB" },
+          { label: "Portada ahora", value: "~200 KB" },
         ],
         links: [
-          { label: "Demo", href: "#" },
-          { label: "Repositorio", href: "#" },
+          { label: "Ver la web", href: "https://az-listing-media.netlify.app" },
+          { label: "Código", href: "https://github.com/vanerezk/az-media" },
         ],
       },
       {
-        id: "bugs",
-        title: "Cuaderno de bugs CSS",
-        year: "2025",
+        id: "cocteleria",
+        title: "Web de coctelería",
+        year: "2026",
         kind: "study",
-        summary: "Colección de bugs de maquetación reales, reproducidos y resueltos.",
+        summary: "Web de una sola página, de estética oscura, para una coctelería de barrio.",
         problem:
-          "Safari en iOS, 100vh, stacking contexts, overflow en flex… Los bugs de layout se repiten y nadie documenta la causa.",
+          "Un bar de copas vive de su atmósfera, y la mayoría de webs de hostelería la pierden entre plantillas, menús en PDF y fotos que tardan en cargar.",
         solution:
-          "Cada entrada tiene una reproducción mínima, la causa explicada y el arreglo. Un recurso público que demuestra cómo depuro.",
-        stack: ["HTML", "CSS", "JavaScript"],
-        metrics: [{ label: "Casos", value: "12" }],
-        links: [{ label: "Ver cuaderno", href: "#" }],
+          "HTML, CSS y JavaScript sin frameworks: carta con pestañas que filtran las bebidas por categoría sin recargar, navegación con desplazamiento suave, jerarquía clara y carga rápida de imágenes, pensada primero para móvil.",
+        images: [
+          {
+            src: "/projects/cocteleria.png",
+            alt: "Portada de la web: cóctel con fondo oscuro y el titular «After dark, poured perfectly».",
+            width: 1021,
+            height: 728,
+          },
+        ],
+        stack: ["HTML5", "CSS3", "JavaScript"],
+        metrics: [],
+        links: [{ label: "Ver en Upwork", href: "https://www.upwork.com/freelancers/~0155b3bc67bb73cb56" }],
+      },
+      {
+        id: "scaleforge",
+        title: "ScaleForge · landing SaaS",
+        year: "2026",
+        kind: "study",
+        summary: "Landing de producto para un SaaS de crecimiento, construida desde cero.",
+        problem:
+          "Una landing SaaS tiene que explicar un producto complejo en un pantallazo y convertir sin parecer una plantilla más.",
+        solution:
+          "Un diseño complejo convertido en componentes de React: selector de precios mensual / anual, menú lateral para móvil y animaciones en CSS. Ejecución al píxel, código ordenado y carga rápida en cualquier navegador.",
+        images: [
+          {
+            src: "/projects/scaleforge-hero.png",
+            alt: "Portada de ScaleForge: titular «Convert more users» junto a un panel de métricas de adquisición.",
+            width: 1036,
+            height: 718,
+          },
+          {
+            src: "/projects/scaleforge-precios.png",
+            alt: "Sección de precios de ScaleForge: planes Basic, Pro y Enterprise con selector mensual o anual.",
+            width: 1032,
+            height: 710,
+          },
+        ],
+        stack: ["React", "TypeScript", "Tailwind CSS"],
+        metrics: [],
+        links: [{ label: "Ver en Upwork", href: "https://www.upwork.com/freelancers/~0155b3bc67bb73cb56" }],
       },
       {
         id: "portfolio",
@@ -126,6 +187,54 @@ export const es: Dictionary = {
         metrics: [{ label: "JS cliente", value: "mínimo" }],
         links: [{ label: "Código", href: "https://github.com/vanerezk/portfolio" }],
       },
+    ],
+  },
+  experience: {
+    intro: "Antes de trabajar por mi cuenta, desarrollé producto en equipos con mucho tráfico y mucha responsabilidad.",
+    items: [
+      {
+        period: "2026 — hoy",
+        company: "Freelance",
+        role: "Desarrollo fullstack",
+        points: ["Webs y sistemas a medida para clientes, como VERA y AZ Listing Media."],
+      },
+      {
+        period: "Ene 2026 — jun 2026",
+        company: "Alamaula",
+        role: "Software Engineer (Full-Stack)",
+        points: [
+          "Arquitectura frontend y consumo de servicios en plataformas con mucho tráfico: un 25 % menos de tiempo de ejecución y render.",
+          "Integración de APIs REST complejas y gestión de estado global para mantener los datos consistentes.",
+          "Ciclo completo en equipos Agile, con integración y despliegue continuos (CI/CD).",
+        ],
+      },
+      {
+        period: "Abr 2024 — dic 2025",
+        company: "AZListings",
+        role: "Software Engineer (Full-Stack)",
+        points: [
+          "Lideré el ciclo completo del producto: modelado de datos, backend en Node.js y despliegue en producción.",
+          "Servicios y APIs escalables, con sincronización de datos, seguridad e integridad del sistema.",
+          "Decisiones de arquitectura orientadas a la eficiencia, la escalabilidad y a reducir la deuda técnica.",
+        ],
+      },
+      {
+        period: "Mar 2022 — abr 2023",
+        company: "Motolike",
+        role: "Systems & Support Engineer",
+        points: [
+          "Infraestructura de sistemas y redes corporativas (Cisco, routing, switching).",
+          "Copias de seguridad automáticas y plan de recuperación ante desastres.",
+        ],
+      },
+    ],
+    educationLabel: "Formación",
+    education: "Arquitectura · Universidad de Morón (Argentina)",
+    languagesLabel: "Idiomas",
+    languages: [
+      { name: "Español", level: "Nativo" },
+      { name: "Inglés", level: "Bilingüe · C2" },
+      { name: "Portugués", level: "Intermedio · B2" },
     ],
   },
   services: {
@@ -181,6 +290,7 @@ export const es: Dictionary = {
           { name: "Node.js", use: "Servicios y scripts de datos.", level: 2 },
           { name: "Express", use: "APIs REST ligeras.", level: 1 },
           { name: "APIs REST", use: "Diseño, consumo e integración.", level: 2 },
+          { name: "Supabase · PostgreSQL", use: "Auth, Realtime, Storage y seguridad por filas.", level: 1 },
         ],
       },
       {
@@ -188,6 +298,7 @@ export const es: Dictionary = {
         hatch: "dots",
         items: [
           { name: "Git & GitHub", use: "Ramas, PRs, revisión de código.", level: 2 },
+          { name: "Vercel · Netlify · CI/CD", use: "Despliegues, cabeceras de seguridad y dominios.", level: 2 },
           { name: "Agile / Scrum", use: "Entregas cortas y frecuentes.", level: 1 },
           { name: "Figma", use: "De la idea al handoff.", level: 1 },
         ],
@@ -202,6 +313,7 @@ export const es: Dictionary = {
     stamp: "Aprobado",
     links: [
       { label: "LinkedIn", href: "https://linkedin.com/in/vanessarezk" },
+      { label: "Upwork", href: "https://www.upwork.com/freelancers/~0155b3bc67bb73cb56" },
       { label: "GitHub", href: "https://github.com/vanerezk" },
     ],
   },

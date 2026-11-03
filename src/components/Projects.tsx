@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import type { Dictionary } from "@/content";
 
 /**
@@ -9,7 +10,7 @@ import type { Dictionary } from "@/content";
  */
 export function ProjectIndex({ t }: { t: Dictionary }) {
   const { items, labels } = t.projects;
-  const [open, setOpen] = useState<string | null>(null);
+  const [open, setOpen] = useState<string | null>(items.find((p) => p.featured)?.id ?? null);
 
   return (
     <ol className="border-b border-line">
@@ -33,7 +34,7 @@ export function ProjectIndex({ t }: { t: Dictionary }) {
                   {p.title}
                 </span>
                 <span className="annot col-span-2 col-start-2 text-ink-soft group-hover:text-paper/70 md:col-span-2 md:col-start-auto">
-                  {p.kind === "built" ? labels.built : labels.study}
+                  {labels[p.kind]}
                 </span>
                 <span className="annot hidden text-ink-soft group-hover:text-paper/70 md:col-span-3 md:block">
                   {p.stack.slice(0, 3).join(" · ")}
@@ -62,6 +63,25 @@ export function ProjectIndex({ t }: { t: Dictionary }) {
             >
               <div className="overflow-hidden">
                 <div className="sheet-grid gap-y-8 pt-2 pb-12">
+                  {p.images && (
+                    <div
+                      className={`col-span-4 grid gap-4 md:col-start-2 ${
+                        p.images.length > 1 ? "md:col-span-10 md:grid-cols-2" : "md:col-span-6"
+                      }`}
+                    >
+                      {p.images.map((img) => (
+                        <Image
+                          key={img.src}
+                          src={img.src}
+                          alt={img.alt}
+                          width={img.width}
+                          height={img.height}
+                          sizes="(min-width: 768px) 45vw, 100vw"
+                          className="h-auto w-full border border-line"
+                        />
+                      ))}
+                    </div>
+                  )}
                   <p className="col-span-4 text-lead md:col-span-6 md:col-start-2">{p.summary}</p>
 
                   <dl className="col-span-4 grid gap-6 md:col-span-6 md:col-start-2 md:grid-cols-2">
@@ -73,6 +93,26 @@ export function ProjectIndex({ t }: { t: Dictionary }) {
                       <dt className="annot mb-2 text-accent-ink">{labels.solution}</dt>
                       <dd className="text-ink-soft">{p.solution}</dd>
                     </div>
+                    {p.parts && (
+                      <div className="md:col-span-2">
+                        <dt className="annot mb-3 text-accent-ink">{labels.parts}</dt>
+                        <dd>
+                          <ol className="grid gap-px bg-line md:grid-cols-2">
+                            {p.parts.map((part, j) => (
+                              <li key={part.name} className="bg-paper py-3 md:p-4">
+                                <p className="mb-1 flex gap-3 font-medium">
+                                  <span className="annot pt-1 text-accent-ink">
+                                    {String.fromCharCode(97 + j)}
+                                  </span>
+                                  {part.name}
+                                </p>
+                                <p className="pl-6 text-sm text-ink-soft">{part.body}</p>
+                              </li>
+                            ))}
+                          </ol>
+                        </dd>
+                      </div>
+                    )}
                     <div className="md:col-span-2">
                       <dt className="annot mb-2 text-accent-ink">{labels.stack}</dt>
                       <dd className="flex flex-wrap gap-2">

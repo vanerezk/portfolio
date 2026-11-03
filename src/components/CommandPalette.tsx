@@ -18,6 +18,7 @@ export function CommandPalette({ t, lang }: { t: Dictionary; lang: Locale }) {
       hero: "top",
       manifesto: "manifesto",
       projects: "projects",
+      experience: "experience",
       services: "services",
       stack: "stack",
       contact: "contact",

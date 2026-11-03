@@ -5,17 +5,23 @@ export function isLocale(value: string): value is Locale {
   return (locales as readonly string[]).includes(value);
 }
 
-/** "built" = trabajo real para cliente · "study" = proyecto de estudio / no construido */
-export type ProjectKind = "built" | "study";
+/** "client" = encargo para cliente · "built" = proyecto propio construido · "study" = proyecto de estudio / no construido */
+export type ProjectKind = "client" | "built" | "study";
 
 export type Project = {
   id: string;
   title: string;
   year: string;
   kind: ProjectKind;
+  /** Ficha abierta al cargar la página */
+  featured?: boolean;
   summary: string;
   problem: string;
   solution: string;
+  /** Piezas de un sistema con varias aplicaciones */
+  parts?: { name: string; body: string }[];
+  /** Capturas del proyecto, servidas desde /public */
+  images?: { src: string; alt: string; width: number; height: number }[];
   stack: string[];
   /** Métricas que se dibujan como cotas, p. ej. { label: "Lighthouse", value: "100" } */
   metrics: { label: string; value: string }[];
@@ -35,6 +41,13 @@ export type StackGroup = {
   items: { name: string; use: string; level: 0 | 1 | 2 }[];
 };
 
+export type Job = {
+  period: string;
+  company: string;
+  role: string;
+  points: string[];
+};
+
 export type Dictionary = {
   meta: { title: string; description: string };
   nav: {
@@ -48,7 +61,7 @@ export type Dictionary = {
     otherLocale: string;
   };
   sheets: Record<
-    "hero" | "manifesto" | "projects" | "services" | "stack" | "contact",
+    "hero" | "manifesto" | "projects" | "experience" | "services" | "stack" | "contact",
     { code: string; title: string }
   >;
   hero: {
@@ -65,16 +78,23 @@ export type Dictionary = {
   manifesto: { paragraphs: string[]; notes: string[] };
   projects: {
     intro: string;
-    labels: {
-      built: string;
-      study: string;
+    labels: Record<ProjectKind, string> & {
       problem: string;
       solution: string;
+      parts: string;
       stack: string;
       open: string;
       close: string;
     };
     items: Project[];
+  };
+  experience: {
+    intro: string;
+    items: Job[];
+    educationLabel: string;
+    education: string;
+    languagesLabel: string;
+    languages: { name: string; level: string }[];
   };
   services: { intro: string; scopeLabel: string; timeLabel: string; items: Service[] };
   stack: { intro: string; levels: [string, string, string]; groups: StackGroup[] };

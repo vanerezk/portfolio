@@ -4,6 +4,7 @@ import { Hero } from "@/components/Hero";
 import { Manifesto } from "@/components/Manifesto";
 import { Sheet } from "@/components/Sheet";
 import { ProjectIndex } from "@/components/Projects";
+import { Experience } from "@/components/Experience";
 import { Services } from "@/components/Services";
 import { Stack } from "@/components/Stack";
 import { ContactBlock } from "@/components/Contact";
@@ -34,6 +35,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
           <ProjectIndex t={t} />
         </Sheet>
 
+        <Experience t={t} />
         <Services t={t} />
         <Stack t={t} />
 

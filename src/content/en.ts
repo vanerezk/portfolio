@@ -21,12 +21,13 @@ export const en: Dictionary = {
     hero: { code: "A-01", title: "Cover" },
     manifesto: { code: "A-02", title: "Statement" },
     projects: { code: "A-03", title: "Projects" },
-    services: { code: "A-04", title: "Services" },
-    stack: { code: "A-05", title: "Materials" },
-    contact: { code: "A-06", title: "Contact" },
+    experience: { code: "A-04", title: "Experience" },
+    services: { code: "A-05", title: "Services" },
+    stack: { code: "A-06", title: "Materials" },
+    contact: { code: "A-07", title: "Contact" },
   },
   hero: {
-    eyebrow: "Freelance fullstack · Spain",
+    eyebrow: "Freelance fullstack · Málaga, Spain",
     titleA: "Web development,",
     titleAccent: "built",
     titleB: "at 1:1 scale.",
@@ -50,67 +51,127 @@ export const en: Dictionary = {
   },
   projects: {
     intro:
-      "Project sheets. Entries marked “Study” are self-initiated: as in architecture, an unbuilt project still shows how you think.",
+      "Project sheets. Entries marked “Commission” are client work; those marked “Study” are self-initiated mockups: as in architecture, an unbuilt project still shows how you think.",
     labels: {
+      client: "Commission",
       built: "Built",
       study: "Study",
       problem: "Problem",
       solution: "Solution",
+      parts: "System parts",
       stack: "Stack",
       open: "Open sheet",
       close: "Close sheet",
     },
     items: [
       {
-        id: "catalogo",
-        title: "API-driven B2B catalogue",
+        id: "vera",
+        title: "VERA · a bar's digital system",
         year: "2026",
-        kind: "study",
-        summary: "Product catalogue fed by an external REST API.",
+        kind: "client",
+        featured: true,
+        summary:
+          "Website, bookings, admin panel, bar tablet and inventory for a bar in Málaga that is about to open. I designed and built it end to end.",
         problem:
-          "A distributor maintains its catalogue by hand on a website and in a spreadsheet. Prices and stock never match.",
+          "A new bar needed far more than a website: bookings without phone calls or DMs, a panel to manage them, a screen behind the bar for the night shift and a clear view of what each drink earns. All without juggling five different tools.",
         solution:
-          "A Node/Express layer that normalises the supplier API, cache with revalidation, and a Next.js frontend with indexable filters.",
-        stack: ["Next.js", "TypeScript", "Node.js", "Express", "REST"],
-        metrics: [
-          { label: "Sync", value: "< 5 min" },
-          { label: "Products", value: "1,200" },
+          "A single Supabase backend (Postgres, Auth, Storage and Realtime) locked down with row-level security, and several apps on top sharing the same data in real time.",
+        parts: [
+          {
+            name: "Public website",
+            body: "Bilingual and prerendered. Table booking with email confirmation and cancellation, add-to-calendar events and a strict CSP.",
+          },
+          {
+            name: "Admin panel",
+            body: "Live bookings, events with poster upload, menu with sold-out items, and settings for hours, closures and notices.",
+          },
+          {
+            name: "Bar tablet",
+            body: "Kiosk-mode PWA: tonight's bookings, arrivals and no-shows, what's sold out, terrace weather and the bar's music.",
+          },
+          {
+            name: "Inventory & costs",
+            body: "COGS, recipe costing, waste and weighted average cost, with stock alerts and advice in euros. In progress.",
+          },
         ],
-        links: [{ label: "Repository", href: "#" }],
+        stack: ["React", "Next.js", "TypeScript", "Supabase", "PostgreSQL", "Vercel"],
+        metrics: [
+          { label: "Apps", value: "3" },
+          { label: "SQL migrations", value: "22" },
+          { label: "Languages", value: "ES · EN" },
+        ],
+        links: [{ label: "Visit the site", href: "https://veravercel.vercel.app/en/" }],
       },
       {
-        id: "landing",
-        title: "High-performance landing page",
+        id: "az-listing-media",
+        title: "AZ Listing Media",
         year: "2026",
-        kind: "study",
-        summary: "Landing page for a local studio, tuned to the millimetre.",
+        kind: "client",
+        summary:
+          "Website for a real estate photo and video studio in Phoenix, Arizona, rebuilt from scratch.",
         problem:
-          "Landing pages made with visual builders weigh megabytes and lose visitors before they load.",
+          "Photos went straight from the camera at around 20 MB each: the home page downloaded about 190 MB before showing anything.",
         solution:
-          "Semantic HTML, dependency-free CSS, responsive images and zero render-blocking JavaScript. Form via Server Action.",
-        stack: ["Next.js", "CSS", "Vercel"],
+          "React 19 and Vite, AVIF photos in several sizes with lazy loading, per-page code splitting, security headers and prices in plain sight so nobody has to ask.",
+        stack: ["React", "Vite", "CSS", "Node.js", "sharp", "Netlify"],
         metrics: [
-          { label: "Lighthouse", value: "100" },
-          { label: "Weight", value: "< 90 KB" },
+          { label: "Home page before", value: "190 MB" },
+          { label: "Home page now", value: "~200 KB" },
         ],
         links: [
-          { label: "Demo", href: "#" },
-          { label: "Repository", href: "#" },
+          { label: "Visit the site", href: "https://az-listing-media.netlify.app" },
+          { label: "Source", href: "https://github.com/vanerezk/az-media" },
         ],
       },
       {
-        id: "bugs",
-        title: "CSS bug notebook",
-        year: "2025",
+        id: "cocteleria",
+        title: "Cocktail bar website",
+        year: "2026",
         kind: "study",
-        summary: "A collection of real layout bugs, reproduced and solved.",
+        summary: "A sleek, dark single-page showcase site for a local cocktail bar.",
         problem:
-          "iOS Safari, 100vh, stacking contexts, flex overflow… Layout bugs keep coming back and nobody documents the cause.",
+          "A cocktail bar lives on its atmosphere, and most hospitality websites lose it between templates, PDF menus and photos that take ages to load.",
         solution:
-          "Each entry has a minimal repro, the root cause explained and the fix. A public resource that shows how I debug.",
-        stack: ["HTML", "CSS", "JavaScript"],
-        metrics: [{ label: "Cases", value: "12" }],
-        links: [{ label: "Open notebook", href: "#" }],
+          "HTML, CSS and JavaScript, no frameworks: a tabbed menu that filters drink categories without reloading, smooth-scrolling navigation, a clear UI hierarchy and fast media loading, built mobile-first.",
+        images: [
+          {
+            src: "/projects/cocteleria.png",
+            alt: "Website hero: a cocktail on a dark background with the headline “After dark, poured perfectly”.",
+            width: 1021,
+            height: 728,
+          },
+        ],
+        stack: ["HTML5", "CSS3", "JavaScript"],
+        metrics: [],
+        links: [{ label: "View on Upwork", href: "https://www.upwork.com/freelancers/~0155b3bc67bb73cb56" }],
+      },
+      {
+        id: "scaleforge",
+        title: "ScaleForge · SaaS landing page",
+        year: "2026",
+        kind: "study",
+        summary: "A responsive SaaS landing page for a growth platform, built from scratch.",
+        problem:
+          "A SaaS landing page has to explain a complex product at a glance and convert without looking like yet another template.",
+        solution:
+          "A complex layout turned into modern React components: a monthly / yearly pricing toggle, a mobile navigation drawer and smooth CSS animations. Pixel-perfect, cleanly structured and fast in every browser.",
+        images: [
+          {
+            src: "/projects/scaleforge-hero.png",
+            alt: "ScaleForge hero: the headline “Convert more users” next to an acquisition metrics panel.",
+            width: 1036,
+            height: 718,
+          },
+          {
+            src: "/projects/scaleforge-precios.png",
+            alt: "ScaleForge pricing section: Basic, Pro and Enterprise plans with a monthly or yearly toggle.",
+            width: 1032,
+            height: 710,
+          },
+        ],
+        stack: ["React", "TypeScript", "Tailwind CSS"],
+        metrics: [],
+        links: [{ label: "View on Upwork", href: "https://www.upwork.com/freelancers/~0155b3bc67bb73cb56" }],
       },
       {
         id: "portfolio",
@@ -125,6 +186,54 @@ export const en: Dictionary = {
         metrics: [{ label: "Client JS", value: "minimal" }],
         links: [{ label: "Source", href: "https://github.com/vanerezk/portfolio" }],
       },
+    ],
+  },
+  experience: {
+    intro: "Before going freelance, I built product in teams with heavy traffic and real responsibility.",
+    items: [
+      {
+        period: "2026 — now",
+        company: "Freelance",
+        role: "Fullstack development",
+        points: ["Custom websites and systems for clients such as VERA and AZ Listing Media."],
+      },
+      {
+        period: "Jan 2026 — Jun 2026",
+        company: "Alamaula",
+        role: "Software Engineer (Full-Stack)",
+        points: [
+          "Frontend architecture and service consumption for high-traffic platforms: 25% faster execution and rendering.",
+          "Integrated complex REST APIs and global state management to keep data consistent.",
+          "Full development lifecycle in Agile teams, with continuous integration and deployment (CI/CD).",
+        ],
+      },
+      {
+        period: "Apr 2024 — Dec 2025",
+        company: "AZListings",
+        role: "Software Engineer (Full-Stack)",
+        points: [
+          "Led the full product lifecycle: data modelling, Node.js backend and production deployment.",
+          "Scalable services and APIs with reliable data sync, security and system integrity.",
+          "Architecture decisions focused on efficiency, scalability and reducing technical debt.",
+        ],
+      },
+      {
+        period: "Mar 2022 — Apr 2023",
+        company: "Motolike",
+        role: "Systems & Support Engineer",
+        points: [
+          "Corporate systems and network infrastructure (Cisco, routing, switching).",
+          "Automated backups and a disaster recovery plan.",
+        ],
+      },
+    ],
+    educationLabel: "Education",
+    education: "Architecture · Universidad de Morón (Argentina)",
+    languagesLabel: "Languages",
+    languages: [
+      { name: "Spanish", level: "Native" },
+      { name: "English", level: "Bilingual · C2" },
+      { name: "Portuguese", level: "Intermediate · B2" },
     ],
   },
   services: {
@@ -180,6 +289,7 @@ export const en: Dictionary = {
           { name: "Node.js", use: "Services and data scripts.", level: 2 },
           { name: "Express", use: "Lightweight REST APIs.", level: 1 },
           { name: "REST APIs", use: "Design, consumption and integration.", level: 2 },
+          { name: "Supabase · PostgreSQL", use: "Auth, Realtime, Storage and row-level security.", level: 1 },
         ],
       },
       {
@@ -187,6 +297,7 @@ export const en: Dictionary = {
         hatch: "dots",
         items: [
           { name: "Git & GitHub", use: "Branches, PRs, code review.", level: 2 },
+          { name: "Vercel · Netlify · CI/CD", use: "Deployments, security headers and domains.", level: 2 },
           { name: "Agile / Scrum", use: "Short, frequent deliveries.", level: 1 },
           { name: "Figma", use: "From idea to handoff.", level: 1 },
         ],
@@ -201,6 +312,7 @@ export const en: Dictionary = {
     stamp: "Approved",
     links: [
       { label: "LinkedIn", href: "https://linkedin.com/in/vanessarezk" },
+      { label: "Upwork", href: "https://www.upwork.com/freelancers/~0155b3bc67bb73cb56" },
       { label: "GitHub", href: "https://github.com/vanerezk" },
     ],
   },
