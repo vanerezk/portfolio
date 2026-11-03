@@ -11,6 +11,7 @@ import { ContactBlock } from "@/components/Contact";
 import { TitleBlock } from "@/components/TitleBlock";
 import { GridOverlay } from "@/components/GridOverlay";
 import { CommandPalette } from "@/components/CommandPalette";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 export default async function Home({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
@@ -31,7 +32,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         <Manifesto t={t} />
 
         <Sheet id="projects" {...t.sheets.projects} className="pb-24 md:pb-40">
-          <p className="mb-12 max-w-[52ch] text-lead text-ink-soft md:mb-20">{t.projects.intro}</p>
+          <p data-reveal className="mb-12 max-w-[52ch] text-lead text-ink-soft md:mb-20">{t.projects.intro}</p>
           <ProjectIndex t={t} />
         </Sheet>
 
@@ -54,6 +55,7 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
       <TitleBlock t={t} lang={lang} />
       <GridOverlay />
       <CommandPalette t={t} lang={lang} />
+      <ScrollReveal />
     </>
   );
 }

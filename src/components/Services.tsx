@@ -1,15 +1,18 @@
 import type { Dictionary } from "@/content";
 import { Sheet } from "./Sheet";
+import { stagger } from "@/lib/stagger";
 
 export function Services({ t }: { t: Dictionary }) {
   const s = t.services;
   return (
     <Sheet id="services" {...t.sheets.services} className="pb-24 md:pb-40">
-      <p className="mb-12 max-w-[48ch] text-lead text-ink-soft md:mb-20">{s.intro}</p>
+      <p data-reveal className="mb-12 max-w-[48ch] text-lead text-ink-soft md:mb-20">{s.intro}</p>
       <ol className="sheet-grid gap-y-px bg-line md:gap-x-px">
         {s.items.map((item, i) => (
           <li
             key={item.title}
+            data-reveal
+            style={stagger(i % 2)}
             className="group col-span-4 flex flex-col gap-6 bg-paper py-8 md:col-span-6 md:p-10"
           >
             <span className="annot text-accent-ink">S/{String(i + 1).padStart(2, "0")}</span>

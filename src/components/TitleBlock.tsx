@@ -47,8 +47,10 @@ export function TitleBlock({ t, lang }: { t: Dictionary; lang: Locale }) {
       </dl>
       <div className="grid grid-cols-[1fr_auto_auto_auto] items-stretch">
         <p className="annot flex items-center gap-2 px-3 py-3" aria-live="polite">
-          <span className="text-accent-ink tabular-nums">{current.code}</span>
-          <span className="truncate">{current.title}</span>
+          <span key={current.code} className="flex min-w-0 gap-2 [animation:sheet-swap_350ms_var(--ease-draft)_both]">
+            <span className="text-accent-ink tabular-nums">{current.code}</span>
+            <span className="truncate">{current.title}</span>
+          </span>
           <span className="ml-auto hidden text-ink-soft tabular-nums sm:inline">
             {t.nav.sheet} {index}/{String(total).padStart(2, "0")}
           </span>

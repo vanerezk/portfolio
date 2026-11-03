@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import type { Dictionary } from "@/content";
+import { stagger } from "@/lib/stagger";
 
 /**
  * Índice de proyectos (concepto B) con fichas técnicas desplegables (concepto A).
@@ -18,7 +19,7 @@ export function ProjectIndex({ t }: { t: Dictionary }) {
         const isOpen = open === p.id;
         const panelId = `project-${p.id}`;
         return (
-          <li key={p.id} className="border-t border-line">
+          <li key={p.id} data-reveal style={stagger(i)} className="border-t border-line">
             <h3>
               <button
                 type="button"

@@ -22,16 +22,16 @@ export function ContactBlock({ t, lang }: { t: Dictionary; lang: Locale }) {
 
   return (
     <div className="sheet-grid gap-y-10 pb-40 md:pb-48">
-      <h3 className="col-span-4 text-h2 font-medium md:col-span-8">{c.title}</h3>
-      <p className="col-span-4 max-w-[44ch] text-lead text-ink-soft md:col-span-6">{c.lead}</p>
+      <h3 data-reveal className="col-span-4 text-h2 font-medium md:col-span-8">{c.title}</h3>
+      <p data-reveal style={{ "--i": 1 } as React.CSSProperties} className="col-span-4 max-w-[44ch] text-lead text-ink-soft md:col-span-6">{c.lead}</p>
 
-      <div className="col-span-4 md:col-span-8 md:col-start-1">
+      <div data-reveal style={{ "--i": 2 } as React.CSSProperties} className="col-span-4 md:col-span-8 md:col-start-1">
         <ContactForm t={t} lang={lang} />
       </div>
 
       <p className="annot col-span-4 border-t border-line pt-6 text-ink-soft md:col-span-12">{c.direct}</p>
 
-      <div className="relative col-span-4 -mt-4 md:col-span-12">
+      <div data-reveal className="relative col-span-4 -mt-4 md:col-span-12">
         <a
           href={`mailto:${site.email}`}
           className="block break-all font-serif text-[clamp(2rem,9vw,9rem)] leading-none italic transition-colors hover:text-accent"

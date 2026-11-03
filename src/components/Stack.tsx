@@ -1,5 +1,6 @@
 import type { Dictionary, StackGroup } from "@/content";
 import { Sheet } from "./Sheet";
+import { stagger } from "@/lib/stagger";
 
 /** Rayados de la leyenda de materiales, como en un plano. */
 function Hatch({ kind }: { kind: StackGroup["hatch"] }) {
@@ -27,7 +28,11 @@ function Level({ level, labels }: { level: 0 | 1 | 2; labels: [string, string, s
     <span className="flex items-center gap-2" title={labels[level]}>
       <span className="flex gap-0.5" aria-hidden>
         {[0, 1, 2].map((n) => (
-          <span key={n} className={`h-2 w-3 ${n <= level ? "bg-ink" : "border border-line-strong"}`} />
+          <span key={n} className="relative h-2 w-3 border border-line-strong">
+            {n <= level && (
+              <span className="level-fill absolute -inset-px bg-ink" style={{ "--n": n } as React.CSSProperties} />
+            )}
+          </span>
         ))}
       </span>
       <span className="annot hidden text-ink-soft sm:inline">{labels[level]}</span>
@@ -40,18 +45,20 @@ export function Stack({ t }: { t: Dictionary }) {
   const s = t.stack;
   return (
     <Sheet id="stack" {...t.sheets.stack} className="pb-24 md:pb-40">
-      <p className="mb-12 max-w-[48ch] text-lead text-ink-soft md:mb-20">{s.intro}</p>
+      <p data-reveal className="mb-12 max-w-[48ch] text-lead text-ink-soft md:mb-20">{s.intro}</p>
       <div className="space-y-14">
         {s.groups.map((g) => (
           <div key={g.material} className="sheet-grid gap-y-4">
-            <div className="col-span-4 flex items-center gap-4 md:col-span-3 md:items-start">
+            <div data-reveal className="col-span-4 flex items-center gap-4 md:col-span-3 md:items-start">
               <Hatch kind={g.hatch} />
               <h3 className="annot">{g.material}</h3>
             </div>
             <ul className="col-span-4 md:col-span-9">
-              {g.items.map((item) => (
+              {g.items.map((item, i) => (
                 <li
                   key={item.name}
+                  data-reveal
+                  style={stagger(i)}
                   className="grid grid-cols-[1fr_auto] items-baseline gap-x-6 gap-y-1 border-t border-line py-3 md:grid-cols-[14rem_1fr_auto]"
                 >
                   <span className="font-medium">{item.name}</span>

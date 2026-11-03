@@ -102,7 +102,7 @@ export function ContactForm({ t, lang }: { t: Dictionary; lang: Locale }) {
         <button
           type="submit"
           disabled={pending}
-          className="group inline-flex items-center gap-3 bg-ink px-5 py-3 text-paper transition-colors hover:bg-accent hover:text-white disabled:cursor-wait disabled:opacity-60"
+          className="group inline-flex items-center gap-3 bg-ink px-5 py-3 text-paper transition-[background-color,transform] hover:bg-accent hover:text-white active:scale-[0.98] disabled:cursor-wait disabled:opacity-60"
         >
           {pending ? f.sending : f.send}
           <span aria-hidden className="transition-transform group-hover:translate-x-1">

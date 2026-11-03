@@ -139,3 +139,72 @@ body {
   60% { transform: rotate(-12deg) scale(0.95); opacity: 1; }
   100% { transform: rotate(-12deg) scale(1); opacity: 1; }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Movimiento: todo se "traza" como en un plano. Solo transform y
+   opacity. Sin JS o con reduced motion, el contenido se ve tal cual.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  --ease-draft: cubic-bezier(0.2, 0.7, 0, 1);
+}
+
+@keyframes rise {
+  from { transform: translateY(105%); }
+  to { transform: none; }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes sheet-swap {
+  from { opacity: 0; transform: translateY(60%); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Titular de portada: cada tramo sube desde detrás de una máscara */
+.rise-clip {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding: 0 0.06em 0.1em 0;
+  margin-bottom: -0.1em;
+}
+.rise-clip > * {
+  display: inline-block;
+  animation: rise 1000ms var(--ease-draft) both;
+  animation-delay: calc(var(--i, 0) * 110ms + 120ms);
+}
+.intro {
+  animation: fade-up 800ms var(--ease-draft) both;
+  animation-delay: calc(var(--i, 0) * 90ms + 500ms);
+}
+
+/* Revelado al hacer scroll (la clase .motion la pone ScrollReveal) */
+[data-reveal] {
+  transition:
+    opacity 700ms var(--ease-draft),
+    transform 700ms var(--ease-draft);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+.motion [data-reveal]:not([data-in]) {
+  opacity: 0;
+  transform: translateY(18px);
+}
+/* Las líneas de hoja se dibujan de izquierda a derecha */
+[data-reveal="line"] {
+  transform-origin: left;
+  transition-duration: 1200ms;
+}
+.motion [data-reveal="line"]:not([data-in]) {
+  opacity: 1;
+  transform: scaleX(0);
+}
+/* Niveles del stack: se rellenan casilla a casilla */
+.level-fill {
+  transform-origin: left;
+  transition: transform 450ms var(--ease-draft);
+  transition-delay: calc(var(--n, 0) * 110ms + var(--i, 0) * 70ms + 350ms);
+}
+.motion [data-reveal]:not([data-in]) .level-fill {
+  transform: scaleX(0);
+}
