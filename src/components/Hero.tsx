@@ -13,7 +13,7 @@ export function Hero({ t }: { t: Dictionary }) {
       aria-labelledby="hero-title"
       className="relative"
     >
-      <div className="frame flex min-h-[calc(100svh-4rem)] flex-col justify-between pt-6 pb-28 md:pb-36">
+      <div className="frame flex flex-col pt-6 pb-28 md:min-h-[calc(100svh-4rem)] md:justify-between md:pb-36">
         {/* Membrete */}
         <div className="intro sheet-grid items-baseline" style={stagger(-4)}>
           <span className="annot col-span-2 font-semibold md:col-span-3">{site.initials}</span>
