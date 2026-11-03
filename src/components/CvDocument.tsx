@@ -15,10 +15,10 @@ Font.register({ family: "Instrument Serif", src: fontFile("InstrumentSerif-Regul
 // Sin guiones de partición: en un CV se leen como erratas.
 Font.registerHyphenationCallback((word) => [word]);
 
-const ink = "#151515";
-const soft = "#5c5952";
-const accent = "#c8260d";
-const rule = "#d6d2c8";
+const ink = "#5a1a24";
+const soft = "#7d4a50";
+const accent = "#b0305a";
+const rule = "#e2d6c4";
 
 const s = StyleSheet.create({
   page: { paddingVertical: 36, paddingHorizontal: 44, fontFamily: "Geist", fontSize: 8.8, color: ink, lineHeight: 1.4 },

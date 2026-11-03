@@ -31,7 +31,7 @@ export function Hero({ t }: { t: Dictionary }) {
               <span style={stagger(0)}>{h.titleA}</span>
             </span>{" "}
             <span className="rise-clip">
-              <em className="font-serif font-normal italic tracking-normal" style={stagger(1)}>
+              <em className="font-serif font-normal italic tracking-normal text-accent-ink" style={stagger(1)}>
                 {h.titleAccent}
               </em>
             </span>{" "}

@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────────────────────
-   Tokens. Claro = papel de plano. Oscuro = plano en negativo.
-   El acento es el rojo de revisión: solo en interacción y CTA.
+   Tokens. Siempre en claro: papel beige, tinta burdeos y detalles en rosa.
+   El acento solo marca interacción, cotas y códigos de hoja.
    ───────────────────────────────────────────────────────────── */
 :root {
-  --paper: #f3f0e8;
-  --ink: #151515;
-  --ink-soft: #5c5952;
+  --paper: #efe6d6;
+  --ink: #5a1a24;
+  --ink-soft: #7d4a50;
   --line: color-mix(in oklab, var(--ink) 14%, transparent);
   --line-strong: color-mix(in oklab, var(--ink) 40%, transparent);
-  --accent: #ff3b1f;
-  --accent-ink: #c8260d; /* variante con contraste AA para texto pequeño */
+  --accent: #d4577f;
+  --accent-ink: #b0305a; /* variante con contraste AA para texto pequeño */
   --grid-max: 1440px;
   --gutter: 16px;
   color-scheme: light;
@@ -21,16 +21,6 @@
   :root { --gutter: 32px; }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #0f0f0d;
-    --ink: #ece9e1;
-    --ink-soft: #9a968c;
-    --accent: #ff4d33;
-    --accent-ink: #ff6a52;
-    color-scheme: dark;
-  }
-}
 
 @theme inline {
   --color-paper: var(--paper);

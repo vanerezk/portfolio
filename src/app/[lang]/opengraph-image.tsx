@@ -10,11 +10,12 @@ export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
 
-const paper = "#f3f0e8";
-const ink = "#151515";
-const soft = "#5c5952";
-const accent = "#ff3b1f";
-const line = "rgba(21,21,21,0.08)";
+const paper = "#efe6d6";
+const ink = "#5a1a24";
+const soft = "#7d4a50";
+const accent = "#d4577f";
+const accentInk = "#b0305a";
+const line = "rgba(90,26,36,0.08)";
 
 /** Portada del plano en 1200×630: retícula, titular, cota y cajetín. */
 export default async function Image({ params }: { params: Promise<{ lang: string }> }) {
@@ -67,7 +68,7 @@ export default async function Image({ params }: { params: Promise<{ lang: string
             {t.hero.titleA}
           </div>
           <div style={{ display: "flex", alignItems: "baseline", fontSize: 104, fontWeight: 500, letterSpacing: -4, lineHeight: 0.95 }}>
-            <span style={{ fontFamily: "Instrument Serif", fontStyle: "italic", fontWeight: 400, color: accent, letterSpacing: -2, marginRight: 24 }}>
+            <span style={{ fontFamily: "Instrument Serif", fontStyle: "italic", fontWeight: 400, color: accentInk, letterSpacing: -2, marginRight: 24 }}>
               {t.hero.titleAccent}
             </span>
             <span>{t.hero.titleB}</span>

@@ -23,10 +23,8 @@ export function generateStaticParams() {
 export const dynamicParams = false;
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f3f0e8" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f0f0d" },
-  ],
+  themeColor: "#efe6d6",
+  colorScheme: "light",
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
