@@ -95,6 +95,7 @@ export type Dictionary = {
     education: string;
     languagesLabel: string;
     languages: { name: string; level: string }[];
+    github: { label: string; total: string; less: string; more: string; link: string };
   };
   services: { intro: string; scopeLabel: string; timeLabel: string; items: Service[] };
   stack: { intro: string; levels: [string, string, string]; groups: StackGroup[] };

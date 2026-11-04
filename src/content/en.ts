@@ -229,6 +229,13 @@ export const en: Dictionary = {
     ],
     educationLabel: "Education",
     education: "Architecture · Universidad de Morón (Argentina)",
+    github: {
+      label: "GitHub activity",
+      total: "{n} contributions in the last year",
+      less: "Less",
+      more: "More",
+      link: "View profile",
+    },
     languagesLabel: "Languages",
     languages: [
       { name: "Spanish", level: "Native" },

@@ -198,3 +198,17 @@ body {
 .motion [data-reveal]:not([data-in]) .level-fill {
   transform: scaleX(0);
 }
+
+/* Actividad de GitHub: trama rosa por intensidad que se "imprime" columna a columna */
+.gh-0 { fill: transparent; stroke: var(--line-strong); stroke-width: 0.6; }
+.gh-1 { fill: color-mix(in oklab, var(--accent) 30%, transparent); }
+.gh-2 { fill: color-mix(in oklab, var(--accent) 55%, transparent); }
+.gh-3 { fill: color-mix(in oklab, var(--accent) 80%, transparent); }
+.gh-4 { fill: var(--accent-ink); }
+.gh-cell {
+  transition: opacity 400ms var(--ease-draft);
+  transition-delay: calc(var(--w, 0) * 14ms + 200ms);
+}
+.motion [data-reveal]:not([data-in]) .gh-cell {
+  opacity: 0;
+}

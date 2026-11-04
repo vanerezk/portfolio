@@ -6,6 +6,7 @@ export const site = {
   name: "Vanessa Rezk",
   initials: "V.REZK",
   email: "rezkvane@gmail.com",
+  github: "vanerezk",
   /** Solo para uso en servidor (metadatos, sitemap, CV). NEXT_PUBLIC_SITE_URL tiene prioridad. */
   url: process.env.NEXT_PUBLIC_SITE_URL ?? (vercelUrl ? `https://${vercelUrl}` : "http://localhost:3000"),
   revision: "2026.11",
