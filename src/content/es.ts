@@ -71,9 +71,9 @@ export const es: Dictionary = {
         kind: "client",
         featured: true,
         summary:
-          "Web, reservas, panel de gestión, tablet de barra e inventario para un bar de Málaga que está a punto de abrir. Lo diseñé y construí de principio a fin.",
+          "Web, reservas, panel de gestión, tablet de barra, inventario y control sanitario para un bar de Málaga que está a punto de abrir. Lo diseñé y construí de principio a fin.",
         problem:
-          "Un bar nuevo necesitaba mucho más que una web: reservas sin llamadas ni mensajes directos, un panel para gestionarlas, una pantalla en la barra para el servicio de la noche y saber cuánto deja cada consumición. Todo sin depender de cinco herramientas distintas.",
+          "Un bar nuevo necesitaba mucho más que una web: reservas sin llamadas ni mensajes directos, un panel para gestionarlas, una pantalla en la barra para el servicio de la noche, saber cuánto deja cada consumición y llevar los registros sanitarios que pide la inspección. Todo sin depender de cinco herramientas distintas.",
         solution:
           "Un único backend en Supabase (Postgres, Auth, Storage y Realtime) protegido con seguridad por filas, y varias aplicaciones encima que comparten los mismos datos en tiempo real.",
         parts: [
@@ -87,16 +87,20 @@ export const es: Dictionary = {
           },
           {
             name: "Tablet de barra",
-            body: "PWA en modo quiosco: reservas de la noche, llegadas y no-shows, lo agotado, el tiempo para la terraza y la música del bar.",
+            body: "PWA en modo quiosco: reservas de la noche en tiempo real con llegadas y no-shows, lo agotado, los próximos eventos, el tiempo para la terraza y la música del bar en Spotify.",
           },
           {
-            name: "Inventario y costes",
-            body: "COGS, escandallos, mermas y precio medio ponderado, con alertas de stock y consejos en euros. En desarrollo.",
+            name: "Stock: inventario y costes",
+            body: "COGS, escandallos y precio medio ponderado, compras por albarán, conteos y mermas. Una pantalla de ganancias explicada en claro, con consejos en euros por semana. Pensada para la tablet.",
+          },
+          {
+            name: "Control sanitario (APPCC)",
+            body: "Temperaturas de neveras, plan de limpieza, trazabilidad de lo que llega, matriz de los 14 alérgenos y el PDF del mes para Sanidad. Sigue funcionando sin wifi y sube los registros al volver.",
           },
         ],
         stack: ["React", "Next.js", "TypeScript", "Supabase", "PostgreSQL", "Vercel"],
         metrics: [
-          { label: "Aplicaciones", value: "3" },
+          { label: "Aplicaciones", value: "4" },
           { label: "Migraciones SQL", value: "22" },
           { label: "Idiomas", value: "ES · EN" },
         ],
@@ -112,7 +116,7 @@ export const es: Dictionary = {
         problem:
           "Las fotos salían directas de la cámara, a unos 20 MB cada una: la portada descargaba alrededor de 190 MB antes de enseñar nada.",
         solution:
-          "React 19 y Vite, fotos en AVIF a varios tamaños con carga diferida, código dividido por página, cabeceras de seguridad y precios a la vista para que nadie tenga que preguntar.",
+          "React 19 y Vite, fotos en AVIF a varios tamaños con carga diferida, código dividido por página, cabeceras de seguridad y precios a la vista para que nadie tenga que preguntar. Ahora preparo una segunda versión con aire de monografía de arquitectura: vídeo en la portada, una selección de 27 fotos y las tarifas en formato índice.",
         stack: ["React", "Vite", "CSS", "Node.js", "sharp", "Netlify"],
         metrics: [
           { label: "Portada antes", value: "190 MB" },

@@ -100,7 +100,10 @@ export function ProjectIndex({ t }: { t: Dictionary }) {
                         <dd>
                           <ol className="grid gap-px bg-line md:grid-cols-2">
                             {p.parts.map((part, j) => (
-                              <li key={part.name} className="bg-paper py-3 md:p-4">
+                              <li
+                                key={part.name}
+                                className="bg-paper py-3 md:p-4 md:[&:last-child:nth-child(odd)]:col-span-2"
+                              >
                                 <p className="mb-1 flex gap-3 font-medium">
                                   <span className="annot pt-1 text-accent-ink">
                                     {String.fromCharCode(97 + j)}

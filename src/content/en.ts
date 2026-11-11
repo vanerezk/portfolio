@@ -71,9 +71,9 @@ export const en: Dictionary = {
         kind: "client",
         featured: true,
         summary:
-          "Website, bookings, admin panel, bar tablet and inventory for a bar in Málaga that is about to open. I designed and built it end to end.",
+          "Website, bookings, admin panel, bar tablet, inventory and food safety records for a bar in Málaga that is about to open. I designed and built it end to end.",
         problem:
-          "A new bar needed far more than a website: bookings without phone calls or DMs, a panel to manage them, a screen behind the bar for the night shift and a clear view of what each drink earns. All without juggling five different tools.",
+          "A new bar needed far more than a website: bookings without phone calls or DMs, a panel to manage them, a screen behind the bar for the night shift, a clear view of what each drink earns and the hygiene records health inspectors ask for. All without juggling five different tools.",
         solution:
           "A single Supabase backend (Postgres, Auth, Storage and Realtime) locked down with row-level security, and several apps on top sharing the same data in real time.",
         parts: [
@@ -87,16 +87,20 @@ export const en: Dictionary = {
           },
           {
             name: "Bar tablet",
-            body: "Kiosk-mode PWA: tonight's bookings, arrivals and no-shows, what's sold out, terrace weather and the bar's music.",
+            body: "Kiosk-mode PWA: tonight's bookings in real time with arrivals and no-shows, what's sold out, upcoming events, terrace weather and the bar's Spotify.",
           },
           {
-            name: "Inventory & costs",
-            body: "COGS, recipe costing, waste and weighted average cost, with stock alerts and advice in euros. In progress.",
+            name: "Stock: inventory & costs",
+            body: "COGS, recipe costing and weighted average cost, purchases from delivery notes, stock counts and waste. A plain-language profit screen with weekly advice in euros. Built tablet-first.",
+          },
+          {
+            name: "Food safety (HACCP)",
+            body: "Fridge temperatures, cleaning plan, traceability of deliveries, a 14-allergen matrix and a monthly PDF for inspectors. Keeps working offline and syncs when it's back.",
           },
         ],
         stack: ["React", "Next.js", "TypeScript", "Supabase", "PostgreSQL", "Vercel"],
         metrics: [
-          { label: "Apps", value: "3" },
+          { label: "Apps", value: "4" },
           { label: "SQL migrations", value: "22" },
           { label: "Languages", value: "ES · EN" },
         ],
@@ -112,7 +116,7 @@ export const en: Dictionary = {
         problem:
           "Photos went straight from the camera at around 20 MB each: the home page downloaded about 190 MB before showing anything.",
         solution:
-          "React 19 and Vite, AVIF photos in several sizes with lazy loading, per-page code splitting, security headers and prices in plain sight so nobody has to ask.",
+          "React 19 and Vite, AVIF photos in several sizes with lazy loading, per-page code splitting, security headers and prices in plain sight so nobody has to ask. I'm now working on a second version styled like an architecture monograph: a video hero, a curated edit of 27 photos and a rate-card pricing page.",
         stack: ["React", "Vite", "CSS", "Node.js", "sharp", "Netlify"],
         metrics: [
           { label: "Home page before", value: "190 MB" },
